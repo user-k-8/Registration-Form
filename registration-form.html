@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	
+	<!-- Core Style -->
+	<link rel="stylesheet" href="style.css">
+
+	<!-- Document Title
+	============================================= -->
+	<title>Registration Form - Fitness Center</title>
+
+
+</head>
+
+<body class="stretched"  >
+
+		<!-- Content
+		============================================= -->
+		<section id="content" >
+            <div id="logo">
+                <a href="#">
+                    <img class="logo-default gym-logo" srcset="demos/gym/images/section/L.png" src="demos/gym/images/section/L.png" alt="Fitness Center Gym Logo">
+                </a>
+            </div><!-- #logo end -->
+			<div class="content-wrap">
+				<div class="container ">
+					<div class="form-widget">
+						<div class="form-result"></div>
+                        <div class="row shadow transparent form-border  form-container ">
+                            <div class="col-lg-4 dark bmi" >
+                                <h3 class="text-center mt-5 text-white">Complete the Registration Form</h3>           
+                                    <h3 class="text-center mt-5 text-white">to become a member </h3>
+                                    <h3 class="text-center mt-5 text-white">and  find out your BMI </h3>
+                                    <h3 class="text-center mt-5 text-white">Your BMI is:</h3>
+                                    <h3 class="text-center mt-5 text-white" id="output1"> </h3>
+                                    <h3 class="text-center mt-5 text-white">Your Weight Status is: </h3>
+                                    <h3 class="text-center mt-5 text-white" id="output2"> </h3>                                           
+                            </div>
+                            <div class="col-lg-8 p-5">
+                                <form class="row mb-0" id="fitness-form" action="include/form.php" method="post" enctype="multipart/form-data">
+                                    <div class="form-process">
+                                        <div class="css3-spinner">
+                                            <div class="css3-spinner-scaler"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 form-group">
+                                        <div class="row">
+                                            <div class="col-sm-2 col-form-label  label-text">
+                                                <label for="fitness-form-name" class="label-text">Name*:</label>
+                                            </div>
+                                            <div class="col-sm-10 ">
+                                                <input type="text" name="fitness-form-name" id="fitness-form-name" class="form-control  transparent input-text" value="" placeholder="">
+                                                <span id="error-message-name" class="error"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 form-group">
+                                        <div class="row">
+                                            <div class="col-sm-2 col-form-label  label-text">
+                                                <label for="fitness-form-email" class="label-text">Email*:</label>
+                                            </div>
+                                            <div class="col-sm-10 ">
+                                                <input type="text" name="fitness-form-email" id="fitness-form-email" class="form-control input-bg input-text" value="" placeholder="">
+                                                <span id="error-message-email" class="error"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12 form-group">
+                                        <div class="row">
+                                            <div class="col-sm-2 col-lg-2 col-form-label  label-text">
+                                                <label for="fitness-form-password" class="label-text">Password*:</label>
+                                            </div>
+                                            <div class="col-sm-10 col-lg-4 password-container ">
+                                                <input type="password" name="fitness-form-password" id="fitness-form-password" class="form-control input-bg required input-text" value="" placeholder="" onfocus="showTooltip()" onblur="hideTooltip()"><br>
+                                                <span id="error-message-password" class="error"></span>
+                                                <span id="tooltip" class="error" role="tooltip">Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number and one special character e.g   Q2wertyu2#</span>
+                                            </div>
+                                            <div class="col-sm-2  col-lg-2 col-form-label  label-text">
+                                                <label for="fitness-form-password" class="label-text">Confirm password*:</label>
+                                            </div>
+                                            <div class="col-sm-10 col-lg-4">
+                                                <input type="password" name="fitness-form-confirmPassword" id="fitness-form-confirmPassword" class="form-control input-bg required input-text" value="" placeholder="">
+                                            </div>
+                                        </div>		
+                                    </div>
+
+                                    <div class="col-12 form-group">
+                                        <div class="row">
+                                            <div class="col-sm-2 col-form-label  label-text">
+                                                <label for="fitness-form-goal" class="label-text">Select Goal:</label>
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <div class="btn-group d-flex radio-input" role="group">
+                                                    <input type="radio" class="btn-check required radio-text " name="fitness-form-goal" id="fitness-form-weight-loss" value="Weight Loss">
+                                                    <label for="fitness-form-weight-loss" class="btn btn-outline-dark radio-text  font-body ls-0 text-transform-none">Weight Loss</label>
+
+                                                    <input type="radio" class="btn-check required radio-text " name="fitness-form-goal" id="fitness-form-mass-gain" value="Mass Gain">
+                                                    <label for="fitness-form-mass-gain" class="btn btn-outline-dark radio-text font-body ls-0 text-transform-none">Mass Gain</label>
+
+                                                    <input type="radio" class="btn-check " name="fitness-form-goal" id="fitness-form-athletic-body" value="Athletic Body">
+                                                    <label for="fitness-form-athletic-body" class="btn btn-outline-dark radio-text font-body ls-0 text-transform-none">Athletic Body</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 form-group">
+                                        <div class="row">
+                                            <div class="col-sm-2 col-form-label">
+                                                <label for="fitness-form-sex" class="label-text">Gender:</label>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="btn-group d-flex radio-input" role="group">
+                                                    <input type="radio" class="btn-check required radio-text" name="fitness-form-sex" id="fitness-form-male" value="Male">
+                                                    <label for="fitness-form-male" class="btn btn-outline-dark radio-text font-body ls-0 text-transform-none ">Male</label>
+
+                                                    <input type="radio" class="btn-check required radio-text" name="fitness-form-sex" id="fitness-form-female" value="Female">
+                                                    <label for="fitness-form-female" class="btn btn-outline-dark radio-text font-body ls-0 text-transform-none">Female</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 form-group">
+                                        <div class="row">
+                                            <div class="col-sm-2 col-form-label  label-text">
+                                                <label for="fitness-form-age" class="label-text">Age:</label>
+                                            </div>
+                                            <div class="col-sm-5  ">
+                                                <input type="number" min="10" max="80" name="fitness-form-age" id="fitness-form-age" class="form-control input-bg required input-text" value="" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 form-group">
+                                        <div class="row">
+                                            <div class="col-sm-2 col-lg-2 col-form-label  label-text">
+                                                <label for="fitness-form-weight" class="label-text">Weight (kg):</label>
+                                            </div>
+                                            <div class="col-sm-5 col-lg-4"> 
+                                                <div class="input-group">
+                                                    <input type="number" max="190" name="fitness-form-weight" id="fitness-form-weight" class="form-control input-bg required input-text" value="" placeholder="">
+                                                    <span class="input-group-text bg-white">kgs</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-2 col-lg-2 col-form-label  label-text">
+                                                <label for="fitness-form-height" class="label-text">Height (m):</label>
+                                            </div>
+                                            <div class="col-sm-5 col-lg-4">
+                                                <div class="input-group  input-text">
+                                                    <input type="number" step="0.01" maxlength="4" max="2.9" name="fitness-form-height" id="fitness-form-height" class="form-control input-bg required input-text" value="" placeholder="">
+                                                    <span class="input-group-text bg-white">m</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>     
+                                                                  
+                                    <div class="col-12 d-none">
+                                        <input type="text" id="fitness-form-botcheck" name="fitness-form-botcheck" value="">
+                                    </div>
+                                    <div class="col-12 d-flex justify-content-end align-items-center">
+                                        <button type="button" id="bmi" class="btn btn-secondary">Calculate BMI</button>
+                                        <button type="submit" name="fitness-form-submit" class="btn btn-success ms-2">Submit Form</button>
+                                    </div>
+                                    <span id="success-message" class="error" style="text-align: right;"></span>
+                                    <input type="hidden" name="prefix" value="fitness-form-">
+                                    <input type="hidden" name="subject" value="New Fitness Received">
+                                    <input type="hidden" id="fitness-form-calories" name="fitness-form-calories" value="">
+                                </form>
+                            </div>		
+                        </div>
+					</div>
+				</div>
+			</div>
+		</section><!-- #content end -->
+
+	<!-- Form script -->
+    <script src="scripts.js"></script>
+</body>
+</html>
