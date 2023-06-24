@@ -8,6 +8,75 @@ const errorMessageName = document.querySelector('#error-message-name');
 const errorMessageEmail= document.querySelector('#error-message-email');
 const errorMessagePassword= document.querySelector('#error-message-password');
 const successMessage =document.querySelector("#success-message");
+const submit =document.querySelector('#submit-button');
+
+// real time input validation
+nameInput.addEventListener('input',
+function(){
+   
+    const nameValue =  nameInput.value.trim();
+    const namePatttern = /^[A-Za-z]+$/; 
+    form.dataset.nameIsValid = "";
+
+    if(nameValue.match(namePatttern)  && nameValue.length>0){
+        errorMessageName.textContent ="✅";
+        form.dataset.nameIsValid= "true";    
+    }
+    else{
+        errorMessageName.textContent = "Please enter a name containing only alphabetical characters";
+    }
+})
+
+emailInput.addEventListener('input',
+function(){
+    
+    const emailValue =  emailInput.value.trim();
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    form.dataset.emailIsValid = "";
+
+    if(emailValue.match(emailPattern)  &&emailValue.length>0){
+        errorMessageEmail.textContent = "✅";
+        form.dataset.emailIsValid = "true";    
+    }
+    else{
+        errorMessageEmail.textContent = "Please enter a valid email address";
+    }
+})
+
+passwordInput.addEventListener('input',
+function(){
+    
+    const passwordValue =  passwordInput.value.trim();
+    const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$&+,:;=?@#|'<>.^*()%!-]).{8,}$/;
+    
+    if(passwordValue.match(passwordPattern) && passwordValue.length >0){
+        errorMessagePassword.textContent =  "✅";
+    }
+    else{
+          errorMessagePassword.textContent = "Please enter a valid password";
+      }
+
+})
+
+confirmPasswordInput.addEventListener('input',
+function(){
+
+    const passwordValue =  passwordInput.value.trim();
+    const confirmPasswordValue = confirmPasswordInput.value.trim();
+    form.dataset.passwordIsValid = "";
+
+        if(confirmPasswordValue.match(passwordValue)){
+            errorMessagePassword.textContent = "✅";
+            form.dataset.passwordIsValid ="true";
+
+        }else{
+            errorMessagePassword.textContent = "The passwords do not match";
+        } 
+      
+
+})
+
+
 
 // function to show password 
  //tooltip when clicked on input field
@@ -55,57 +124,14 @@ bmiButton.addEventListener('click', ()=>{
 })
 
 
-// Input validation
-form.addEventListener('submit', e =>{
+
+submit.addEventListener('click', e =>{
     // prevent form from being submitted
     e.preventDefault();
-     // remove leading and trailing white spaces
-    const nameValue = nameInput.value.trim();
-    const emailValue = emailInput.value.trim();
-    const passwordValue = passwordInput.value.trim();
-    const confirmPasswordValue = confirmPasswordInput.value.trim();
-    //regular expressions to validate input
-    const namePattern = /^[A-Za-z]+$/;
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$&+,:;=?@#|'<>.^*()%!-]).{8,}$/;
-    // variables to store inputs' validity status
-    let nameIsValid = "";
-    let emailIsValid = "";
-    let passwordIsValid = "";
-
-    //check if inputs are valid, update validity status
-    if(emailValue.match(emailPattern)  && emailValue.length>0){
-        errorMessageEmail.textContent = "";
-        emailIsValid = "true";    
-    }
-    else{
-        errorMessageEmail.textContent = "Please enter a valid email address";
-    }
-
-    if(nameValue.match(namePattern) && nameValue.length >0){
-      errorMessageName.textContent = "";
-      nameIsValid="true"   
-    }
-    else{
-        errorMessageName.textContent = "Please enter a valid name containing only alphabetical characters";
-    }
-
-    if(passwordValue.match(passwordPattern) && passwordValue.length >0){
-        errorMessagePassword.textContent = "";
-        if(confirmPasswordValue.match(passwordValue)){
-            errorMessagePassword.textContent = "";
-            passwordIsValid ="true";
-
-        }else{
-            errorMessagePassword.textContent = "The passwords do not match";
-        } 
-      }
-    else{
-          errorMessagePassword.textContent = "Please enter a valid password";
-      }
 
     // input is valid, submit form
-    if(nameIsValid==="true" && emailIsValid==="true" && passwordIsValid=== "true"){
+
+    if(form.dataset.nameIsValid==="true" && form.dataset.emailIsValid==="true" && form.dataset.passwordIsValid=== "true"){
       successMessage.textContent = "Form successfully completed!"
        form.submit();
       window.location.href = "completion.html"
