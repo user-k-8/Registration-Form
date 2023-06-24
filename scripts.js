@@ -125,7 +125,7 @@ bmiButton.addEventListener('click', ()=>{
 
 
 
-submit.addEventListener('click', e =>{
+form.addEventListener('submit', e =>{
     // prevent form from being submitted
     e.preventDefault();
 
